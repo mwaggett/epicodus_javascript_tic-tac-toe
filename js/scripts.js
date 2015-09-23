@@ -59,6 +59,32 @@ Board.prototype.threeInARow = function() {
       || this.checkRow(1) || this.checkRow(2) || this.checkRow(3)
       || this.checkDiagonal();
 }
+
+function Game() {
+  var playerX = new Player("X");
+  var playerO = new Player("O");
+  this.players = [playerX, playerO];
+  this.board = new Board();
+  this.whoseTurn = playerX;
+}
+
+Game.prototype.toggleTurn = function() {
+  if (this.whoseTurn === this.players[0]) {
+    this.whoseTurn = this.players[1];
+  } else {
+    this.whoseTurn = this.players[0];
+  }
+}
+
+Game.prototype.makeAMove = function(space) {
+  this.board.findSpace(space.x_coordinate, space.y_coordinate).mark_by(this.whoseTurn);
+  this.toggleTurn();
+  return this.board.threeInARow();
+}
+
+
+
+
 // $(document).ready(function() {
 //
 // });
