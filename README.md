@@ -1,16 +1,18 @@
-# Application Name
+# Tic-Tac-Toe
 
-##### _{Brief description of application}, {Date of current version}_
+##### _JavaScript objects practice for Epicodus, 23 September 2015_
 
-#### By **Molly Waggett**
+#### By **Yelena Belikova & Molly Waggett**
 
 ## Description
 
-{This is a detailed description of your application. Give as much detail as needed to explain what the application does, and any other information you want users or other developers to have. Do you want other developers to use this code in their apps? Talk about things like that here in simple terms.}
+Tic-Tac-Toe game! Be the first to get three in a row!
 
 ## Setup
 
 * Clone this repository.
+* Open the index.html file in your browser.
+* Play!
 
 ## Technologies Used
 
@@ -21,7 +23,7 @@
 
 ### Legal
 
-Copyright (c) 2015 **Molly Waggett**
+Copyright (c) 2015 **Yelena Belikova & Molly Waggett**
 
 This software is licensed under the MIT license.
 
