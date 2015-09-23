@@ -98,36 +98,37 @@ var createBoard = function() {
   }
 }
 
-// var addMarks = function() {
-//   $("td").each(function() {
-//     for
-//   })
-// }
-
 $(document).ready(function() {
   createBoard();
   var game = new Game();
   $("#player-turn").text(game.whoseTurn.mark + "'s turn");
 
+  // $(".unmarked").hover(function() {
+  //
+  // });
 
-  $(".unmarked").click(function() {
-    $(this).removeClass('unmarked').addClass('marked');
-    $(this).off();
-    var coords = this.id;
-    var x = parseInt(coords.charAt(0));
-    var y = parseInt(coords.charAt(2));
+    $(".unmarked").click(function() {
+      $(this).removeClass('unmarked').addClass('marked');
+      $(this).off();
+      var coords = this.id;
+      var x = parseInt(coords.charAt(0));
+      var y = parseInt(coords.charAt(2));
 
-    var space = game.board.findSpace(x,y);
-    space.mark_by(game.whoseTurn);
-    $(this).text(space.markedBy.mark);
+      var space = game.board.findSpace(x,y);
+      space.mark_by(game.whoseTurn);
+      $(this).text(space.markedBy.mark);
 
-    if(game.board.threeInARow()) {
-      $("#player-turn").text(game.whoseTurn.mark + " WINS!");
-    } else if(game.board.allMarked()) {
-      $("#player-turn").text("It's a tie!");
-    } else {
-      game.toggleTurn();
-      $("#player-turn").text(game.whoseTurn.mark + "'s turn");
-    }
-  });
+      if(game.board.threeInARow()) {
+        $(".unmarked").off();
+        $(".unmarked").removeClass('unmarked');
+        $("#player-turn").text(game.whoseTurn.mark + " WINS!");
+      } else if(game.board.allMarked()) {
+        $("#player-turn").text("It's a tie!");
+      } else {
+        game.toggleTurn();
+        $("#player-turn").text(game.whoseTurn.mark + "'s turn");
+      }
+    });
+
+
 });
