@@ -3,14 +3,13 @@ body {
   font-family: 'Josefin Sans', sans-serif;
 }
 .title h1 {
-  font-size: 60px;
+  font-size: 80px;
 }
 .title {
   margin-bottom: 50px;
 }
 
 .container {
-  /*background-image: url("../img/elastoplast.png");*/
   min-height: 600px;
 }
 td {
@@ -34,4 +33,7 @@ td {
   background-color: #813B81;
   border: none;
   color: white;
+}
+.col2 {
+  margin-top: -20px;
 }
