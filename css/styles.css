@@ -3,7 +3,7 @@ td {
   height: 100px;
   width: 100px;
 }
-td:hover {
+.unmarked:hover  {
   cursor: pointer;
   background-color: red;
 }

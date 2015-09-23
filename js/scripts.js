@@ -8,7 +8,9 @@ function Space(x_coordinate, y_coordinate) {
 }
 
 Space.prototype.mark_by = function(player) {
-  this.markedBy = player;
+  if(this.markedBy === undefined) {
+    this.markedBy = player;
+  }
 }
 
 function Board() {
@@ -60,6 +62,15 @@ Board.prototype.threeInARow = function() {
       || this.checkDiagonal();
 }
 
+Board.prototype.allMarked = function() {
+  for(var index in this.spaces) {
+    if(this.spaces[index].markedBy === undefined) {
+      return false;
+    }
+  }
+  return true;
+}
+
 function Game() {
   var playerX = new Player("X");
   var playerO = new Player("O");
@@ -76,34 +87,47 @@ Game.prototype.toggleTurn = function() {
   }
 }
 
-Game.prototype.makeAMove = function(space) {
-  this.board.findSpace(space.x_coordinate, space.y_coordinate).mark_by(this.whoseTurn);
-  this.toggleTurn();
-  return this.board.threeInARow();
-}
-
 var createBoard = function() {
   for (var row = 1; row < 4; row++) {
     $("#game tbody").append("<tr>");
     for (var column = 1; column < 4; column++) {
       var id = column + "," + row;
-      $("#game tbody").append("<td id='"+id+"'></td>");
+      $("#game tbody").append("<td id='"+id+"' class='unmarked'></td>");
     }
     $("#game tbody").append("</tr>");
   }
 }
 
+// var addMarks = function() {
+//   $("td").each(function() {
+//     for
+//   })
+// }
+
 $(document).ready(function() {
   createBoard();
   var game = new Game();
-  $("#player-turn").replaceWith("<h1>" + game.whoseTurn.mark + "'s turn </h1>");
+  $("#player-turn").text(game.whoseTurn.mark + "'s turn");
 
-  $("td").click(function() {
-    $(this).text(game.whoseTurn.mark);
+
+  $(".unmarked").click(function() {
+    $(this).removeClass('unmarked').addClass('marked');
+    $(this).off();
     var coords = this.id;
     var x = parseInt(coords.charAt(0));
     var y = parseInt(coords.charAt(2));
 
-    game.makeAMove(game.board.findSpace(x,y));
+    var space = game.board.findSpace(x,y);
+    space.mark_by(game.whoseTurn);
+    $(this).text(space.markedBy.mark);
+
+    if(game.board.threeInARow()) {
+      $("#player-turn").text(game.whoseTurn.mark + " WINS!");
+    } else if(game.board.allMarked()) {
+      $("#player-turn").text("It's a tie!");
+    } else {
+      game.toggleTurn();
+      $("#player-turn").text(game.whoseTurn.mark + "'s turn");
+    }
   });
 });
