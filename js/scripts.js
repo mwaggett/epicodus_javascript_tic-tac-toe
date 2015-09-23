@@ -99,13 +99,15 @@ var createBoard = function() {
 }
 
 $(document).ready(function() {
-  createBoard();
-  var game = new Game();
-  $("#player-turn").text(game.whoseTurn.mark + "'s turn");
+  $("#new").click(function() {
+    $("tbody").empty();
+    createBoard();
+    var game = new Game();
+    $("#player-turn").text(game.whoseTurn.mark + "'s turn");
 
-  // $(".unmarked").hover(function() {
-  //
-  // });
+    // $(".unmarked").hover(function() {
+    //
+    // });
 
     $(".unmarked").click(function() {
       $(this).removeClass('unmarked').addClass('marked');
@@ -122,13 +124,14 @@ $(document).ready(function() {
         $(".unmarked").off();
         $(".unmarked").removeClass('unmarked');
         $("#player-turn").text(game.whoseTurn.mark + " WINS!");
+        $("#player-turn").append("<br><img src='http://gifdanceparty.giphy.com/dancers/cowboy.gif'>");
       } else if(game.board.allMarked()) {
         $("#player-turn").text("It's a tie!");
+        $("#player-turn").append("<br><img src='http://gifdanceparty.giphy.com/dancers/theworm.gif'>");
       } else {
         game.toggleTurn();
         $("#player-turn").text(game.whoseTurn.mark + "'s turn");
       }
     });
-
-
+  });
 });

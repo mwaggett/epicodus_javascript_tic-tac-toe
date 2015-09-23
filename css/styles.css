@@ -1,3 +1,17 @@
+body {
+  background-image: url("../img/elastoplast.png");
+}
+.title h1 {
+  font-size: 60px;
+}
+.title {
+  margin-bottom: 50px;
+}
+
+.container {
+  /*background-image: url("../img/elastoplast.png");*/
+  min-height: 600px;
+}
 td {
   border: 2px solid black;
   height: 100px;
@@ -8,4 +22,14 @@ td {
 .unmarked:hover  {
   cursor: pointer;
   background-color: #D8C0D8;
+}
+#player-turn {
+  font-size: 48px;
+  text-align: center;
+}
+.btn {
+  margin-top: 10px;
+  background-color: #813B81;
+  border: none;
+  color: white;
 }
