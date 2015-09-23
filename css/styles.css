@@ -1,5 +1,6 @@
 body {
   background-image: url("../img/elastoplast.png");
+  font-family: 'Josefin Sans', sans-serif;
 }
 .title h1 {
   font-size: 60px;
@@ -22,6 +23,7 @@ td {
 .unmarked:hover  {
   cursor: pointer;
   background-color: #D8C0D8;
+  opacity: 0.5;
 }
 #player-turn {
   font-size: 48px;

@@ -105,9 +105,11 @@ $(document).ready(function() {
     var game = new Game();
     $("#player-turn").text(game.whoseTurn.mark + "'s turn");
 
-    // $(".unmarked").hover(function() {
-    //
-    // });
+    $(".unmarked").hover(function() {
+      $(this).text(game.whoseTurn.mark);
+    }, function() {
+      $(this).empty();
+    });
 
     $(".unmarked").click(function() {
       $(this).removeClass('unmarked').addClass('marked');
