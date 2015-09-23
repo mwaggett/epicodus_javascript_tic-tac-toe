@@ -97,4 +97,13 @@ $(document).ready(function() {
   createBoard();
   var game = new Game();
   $("#player-turn").replaceWith("<h1>" + game.whoseTurn.mark + "'s turn </h1>");
+
+  $("td").click(function() {
+    $(this).text(game.whoseTurn.mark);
+    var coords = this.id;
+    var x = parseInt(coords.charAt(0));
+    var y = parseInt(coords.charAt(2));
+
+    game.makeAMove(game.board.findSpace(x,y));
+  });
 });
