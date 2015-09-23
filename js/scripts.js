@@ -82,9 +82,19 @@ Game.prototype.makeAMove = function(space) {
   return this.board.threeInARow();
 }
 
+var createBoard = function() {
+  for (var row = 1; row < 4; row++) {
+    $("#game tbody").append("<tr>");
+    for (var column = 1; column < 4; column++) {
+      var id = column + "," + row;
+      $("#game tbody").append("<td id='"+id+"'></td>");
+    }
+    $("#game tbody").append("</tr>");
+  }
+}
 
-
-
-// $(document).ready(function() {
-//
-// });
+$(document).ready(function() {
+  createBoard();
+  var game = new Game();
+  $("#player-turn").replaceWith("<h1>" + game.whoseTurn.mark + "'s turn </h1>");
+});
